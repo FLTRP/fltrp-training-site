@@ -209,6 +209,15 @@
     }
     .product-card.hidden { display: none; }
 
+    .product-card.tutorial-card {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .product-card.tutorial-card:hover .detail-btn {
+      background: var(--accent);
+    }
+
     .card-header {
       padding: 24px 24px 16px;
       position: relative;
@@ -538,8 +547,140 @@
     <button class="filter-btn" onclick="filterProducts('think', this)">思辨能力</button>
   </div>
 
-  <!-- 产品卡片 -->
+    <!-- 产品卡片 -->
   <div class="products-grid">
+
+    <!-- 教程解析页面 -->
+    <a href="youyou.html" class="product-card tutorial-card">
+      <div class="card-header">
+        <span class="card-badge badge-junior">教程解析</span>
+        <div class="card-title">《外研悠游英语青少版》</div>
+        <div class="card-en">YouYou English for Teenagers</div>
+        <div class="card-desc">12-16岁中学综合英语教程，3级别6册书，完全贴合新课标设计</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>全面强化应用力：情境真实，任务真实</li>
+          <li>系统提升思辨力：思维技能训练体系化</li>
+          <li>深入培养文化互鉴力：中西文化互鉴</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">应用力</span>
+          <span class="tag">思辨力</span>
+          <span class="tag">互鉴力</span>
+          <span class="tag">应考力</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>12-16岁</span></div>
+        <button class="detail-btn">查看教程 →</button>
+      </div>
+    </a>
+
+    <a href="sibian.html" class="product-card tutorial-card">
+      <div class="card-header">
+        <span class="card-badge badge-think">教程解析</span>
+        <div class="card-title">《外研思辨英语青少版》</div>
+        <div class="card-en">Critical Thinking English</div>
+        <div class="card-desc">12-18岁青少年综合英语教程，6级别11册，对标剑桥终身胜任力</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>思辨能力系统培养</li>
+          <li>深度阅读与批判性思维</li>
+          <li>项目式、探究式实践活动</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">思辨</span>
+          <span class="tag">终身胜任力</span>
+          <span class="tag">项目式学习</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>12-18岁</span></div>
+        <button class="detail-btn">查看教程 →</button>
+      </div>
+    </a>
+
+    <a href="quschool.html" class="product-card tutorial-card">
+      <div class="card-header">
+        <span class="card-badge badge-child">教程解析</span>
+        <div class="card-title">《外研趣学少儿英语（新版）》</div>
+        <div class="card-en">Fun with English (New Edition)</div>
+        <div class="card-desc">5-12岁零起点综合英语教程，7级别14册，2024年全新推出</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>终身胜任力培养</li>
+          <li>CLIL跨学科项目式学习</li>
+          <li>全部300+视频资源</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">CLIL</span>
+          <span class="tag">终身胜任力</span>
+          <span class="tag">海量视频</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>5-12岁</span></div>
+        <button class="detail-btn">查看教程 →</button>
+      </div>
+    </a>
+
+    <a href="quschool-kids.html" class="product-card tutorial-card">
+      <div class="card-header">
+        <span class="card-badge badge-child">教程解析</span>
+        <div class="card-title">《外研趣学儿童英语》</div>
+        <div class="card-en">Fun with English for Children</div>
+        <div class="card-desc">3-6岁幼儿趣味启蒙英语教程，3级别6册，衔接小学外语特色课程</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>早期阅读能力培养</li>
+          <li>TPR全身反应教学法</li>
+          <li>自然拼读基础奠定</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">TPR</span>
+          <span class="tag">自然拼读</span>
+          <span class="tag">趣味启蒙</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>3-6岁</span></div>
+        <button class="detail-btn">查看教程 →</button>
+      </div>
+    </a>
+
+    <a href="sm.html" class="product-card tutorial-card">
+      <div class="card-header">
+        <span class="card-badge" style="background:#e3f2fd;color:#1565c0;">教程解析</span>
+        <div class="card-title">《外研新思维英语少儿版》</div>
+        <div class="card-en">Super Minds</div>
+        <div class="card-desc">基于CLIL教学法，融合故事与社会价值观，培养学生思维技能</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>故事教学法</li>
+          <li>社会价值观培养</li>
+          <li>高阶思维技能训练</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">CLIL</span>
+          <span class="tag">故事</span>
+          <span class="tag">价值观</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>5-10岁</span></div>
+        <button class="detail-btn">查看教程 →</button>
+      </div>
+    </a>
 
     <!-- 产品1：外研新思维英语青少版 -->
     <div class="product-card" data-category="junior" onclick="openModal('p1')">
