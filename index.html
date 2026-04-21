@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外研社外语特色课程体系 | 培训资源中心</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #1a56a0;
+      --primary-light: #2d6cc0;
+      --accent: #e85d26;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --text-sub: #5a6a7e;
+      --border: #e0e8f0;
+    }
+
+    body {
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ===== 顶部导航 ===== */
+    header {
+      background: linear-gradient(135deg, #1a56a0 0%, #0e3a73 100%);
+      color: white;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .logo-sub {
+      font-size: 12px;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+    nav a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: white; }
+
+    /* ===== 英雄区 ===== */
+    .hero {
+      background: linear-gradient(135deg, #1a56a0 0%, #0e3a73 60%, #1a2a5e 100%);
+      color: white;
+      padding: 60px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 70%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: #ffd166; }
+    .hero p {
+      font-size: 16px;
+      opacity: 0.85;
+      max-width: 580px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffd166;
+    }
+    .stat-label {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    /* ===== 主内容区 ===== */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 32px;
+    }
+
+    /* ===== 产品筛选标签 ===== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 24px;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--text-sub);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    /* ===== 产品卡片网格 ===== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1.5px solid var(--border);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(26,86,160,0.15);
+      border-color: var(--primary);
+    }
+    .product-card.hidden { display: none; }
+
+    .card-header {
+      padding: 24px 24px 16px;
+      position: relative;
+    }
+    .card-badge {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .badge-junior { background: #e8f4ff; color: #1a56a0; }
+    .badge-child { background: #fff3e0; color: #e65c00; }
+    .badge-teen { background: #e8f5e9; color: #2e7d32; }
+    .badge-think { background: #f3e5f5; color: #7b1fa2; }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .card-en {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .card-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 24px;
+    }
+
+    .card-body {
+      padding: 16px 24px 20px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .feature-list li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      padding: 3px 10px;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .card-footer {
+      padding: 12px 24px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .age-range {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    .age-range span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .detail-btn {
+      padding: 7px 18px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .detail-btn:hover { background: var(--primary-light); }
+
+    /* ===== 详情弹窗 ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: white;
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-top {
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 1;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      background: var(--bg);
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-sub);
+    }
+    .modal-body {
+      padding: 24px 32px 32px;
+    }
+    .modal-section {
+      margin-bottom: 24px;
+    }
+    .modal-section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .modal-section-title::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 16px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .modal-text {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+    .highlight-box {
+      background: #f0f6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-top: 8px;
+    }
+    .training-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .tp-item {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .tp-item .tp-icon { font-size: 18px; margin-bottom: 4px; }
+
+    /* ===== 培训指南区 ===== */
+    .training-guide {
+      background: linear-gradient(135deg, #1a56a0 0%, #0e3a73 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 48px;
+    }
+    .tg-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tg-sub {
+      opacity: 0.8;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .tg-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .tg-step {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .step-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffd166;
+      margin-bottom: 8px;
+    }
+    .step-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 12px;
+      opacity: 0.75;
+      line-height: 1.5;
+    }
+
+    /* ===== 页脚 ===== */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 26px; }
+      .hero-stats { gap: 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      nav { display: none; }
+      .training-points { grid-template-columns: 1fr; }
+      .modal-body { padding: 20px; }
+      .modal-top { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">📚</div>
+      <div>
+        <div class="logo-text">外研社培训资源中心</div>
+        <div class="logo-sub">外语特色课程体系</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">产品介绍</a>
+      <a href="#">培训资料</a>
+      <a href="#">教学设计</a>
+      <a href="#">联系我们</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 英雄区 -->
+<div class="hero">
+  <div class="hero-tag">🎯 外研社外语特色课程体系搭建</div>
+  <h1>为每一位孩子找到<span>最合适的英语之路</span></h1>
+  <p>外研社精心打造的多层次外语课程体系，从儿童到青少年，从趣味启蒙到思辨提升，助力学校构建完整的外语教育生态。</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">精品课程系列</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3-18</div>
+      <div class="stat-label">覆盖年龄段</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">全国</div>
+      <div class="stat-label">使用院校</div>
+    </div>
+  </div>
+</div>
+
+<!-- 主内容 -->
+<div class="main">
+
+  <div class="section-title">选择您的课程系列</div>
+  <div class="section-sub">点击卡片查看详细介绍，了解培训要点与教学资源</div>
+
+  <!-- 筛选标签 -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">全部系列</button>
+    <button class="filter-btn" onclick="filterProducts('child', this)">儿童段</button>
+    <button class="filter-btn" onclick="filterProducts('junior', this)">青少年段</button>
+    <button class="filter-btn" onclick="filterProducts('think', this)">思辨能力</button>
+  </div>
+
+  <!-- 产品卡片 -->
+  <div class="products-grid">
+
+    <!-- 产品1：外研新思维英语青少版 -->
+    <div class="product-card" data-category="junior" onclick="openModal('p1')">
+      <div class="card-header">
+        <span class="card-badge badge-junior">青少年段</span>
+        <div class="card-title">外研新思维英语青少版</div>
+        <div class="card-en">New Thinking English for Teenagers</div>
+        <div class="card-desc">以"新思维"为核心理念，培养学生批判性思维与英语综合运用能力，适配中小学英语教学需求。</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>主题式单元设计，语言与思维并重</li>
+          <li>多模态学习资源，支持混合式教学</li>
+          <li>配套数字化工具，助力教学评一体化</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">批判性思维</span>
+          <span class="tag">主题教学</span>
+          <span class="tag">数字化</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>7-15岁</span></div>
+        <button class="detail-btn">查看详情 →</button>
+      </div>
+    </div>
+
+    <!-- 产品2：外研趣学少儿英语（新版） -->
+    <div class="product-card" data-category="child" onclick="openModal('p2')">
+      <div class="card-header">
+        <span class="card-badge badge-child">儿童段</span>
+        <div class="card-title">外研趣学少儿英语（新版）</div>
+        <div class="card-en">Fun with English (New Edition)</div>
+        <div class="card-desc">全新升级，以"趣"为核心，激发少儿英语学习兴趣，打造快乐自信的英语启蒙环境。</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>游戏化设计，寓教于乐，趣味十足</li>
+          <li>全彩绘本式呈现，视觉刺激强烈</li>
+          <li>歌谣+故事+游戏，多元输入模式</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">趣味启蒙</span>
+          <span class="tag">游戏化</span>
+          <span class="tag">歌谣故事</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>6-10岁</span></div>
+        <button class="detail-btn">查看详情 →</button>
+      </div>
+    </div>
+
+    <!-- 产品3：外研趣学儿童英语 -->
+    <div class="product-card" data-category="child" onclick="openModal('p3')">
+      <div class="card-header">
+        <span class="card-badge badge-child">儿童段</span>
+        <div class="card-title">外研趣学儿童英语</div>
+        <div class="card-en">Fun with English for Children</div>
+        <div class="card-desc">专为3-6岁幼儿设计，用听说启蒙英语学习，建立语感与学习兴趣，夯实英语学习基础。</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>自然拼读体系，科学建立语音意识</li>
+          <li>TPR全身反应教学法，沉浸式体验</li>
+          <li>家校联动资源包，延伸课外学习</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">幼儿启蒙</span>
+          <span class="tag">自然拼读</span>
+          <span class="tag">TPR教学</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>3-6岁</span></div>
+        <button class="detail-btn">查看详情 →</button>
+      </div>
+    </div>
+
+    <!-- 产品4：外研思辨英语青少版 -->
+    <div class="product-card" data-category="teen think" onclick="openModal('p4')">
+      <div class="card-header">
+        <span class="card-badge badge-think">思辨能力</span>
+        <div class="card-title">外研思辨英语青少版</div>
+        <div class="card-en">Critical Thinking English for Teenagers</div>
+        <div class="card-desc">聚焦高阶思维能力培养，以辩论、论证、分析为核心活动，打造具备全球视野的英语学习者。</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>思辨任务驱动，培养逻辑思维能力</li>
+          <li>真实语境材料，连接全球化议题</li>
+          <li>辩论+论述+写作，输出能力全面提升</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">思辨能力</span>
+          <span class="tag">辩论</span>
+          <span class="tag">高阶思维</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>10-18岁</span></div>
+        <button class="detail-btn">查看详情 →</button>
+      </div>
+    </div>
+
+    <!-- 产品5：更多产品占位 -->
+    <div class="product-card" data-category="junior" onclick="openModal('p5')">
+      <div class="card-header">
+        <span class="card-badge badge-teen" style="background:#e3f2fd;color:#1565c0;">综合能力</span>
+        <div class="card-title">外研社英语综合能力系列</div>
+        <div class="card-en">Comprehensive English Ability Series</div>
+        <div class="card-desc">面向学科核心素养，整合听说读写四项技能，构建完整的英语综合能力培养路径。</div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <ul class="feature-list">
+          <li>听说读写一体化设计，均衡发展</li>
+          <li>项目式学习任务，真实语言使用</li>
+          <li>形成性评价工具，可视化成长轨迹</li>
+        </ul>
+        <div class="card-tags">
+          <span class="tag">四技能</span>
+          <span class="tag">项目学习</span>
+          <span class="tag">核心素养</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="age-range">适用年龄：<span>8-16岁</span></div>
+        <button class="detail-btn">查看详情 →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 培训指南 -->
+  <div class="training-guide">
+    <div class="tg-title">📋 培训实施指南</div>
+    <div class="tg-sub">帮助您快速掌握各系列课程的培训要点与实施路径</div>
+    <div class="tg-steps">
+      <div class="tg-step">
+        <div class="step-num">01</div>
+        <div class="step-title">了解课程体系</div>
+        <div class="step-desc">明确各系列定位，选择适合学校实际情况的课程组合</div>
+      </div>
+      <div class="tg-step">
+        <div class="step-num">02</div>
+        <div class="step-title">掌握核心理念</div>
+        <div class="step-desc">深入理解各系列的教学理念与设计思路，把握精髓</div>
+      </div>
+      <div class="tg-step">
+        <div class="step-num">03</div>
+        <div class="step-title">研读教材结构</div>
+        <div class="step-desc">熟悉教材单元结构与教学流程，建立整体框架认知</div>
+      </div>
+      <div class="tg-step">
+        <div class="step-num">04</div>
+        <div class="step-title">实践课堂应用</div>
+        <div class="step-desc">结合配套资源进行示范课设计，落地课堂教学实践</div>
+      </div>
+      <div class="tg-step">
+        <div class="step-num">05</div>
+        <div class="step-title">评估与反思</div>
+        <div class="step-desc">使用评估工具收集反馈，持续优化教学策略</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 页脚 -->
+<footer>
+  <p>© 2026 外语教学与研究出版社 | 外语特色课程体系培训资源中心</p>
+  <p style="margin-top:6px;">如需获取完整培训资料，请联系您的外研社培训师</p>
+</footer>
+
+<!-- 详情弹窗 -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOverlay(event)">
+  <div class="modal" id="modal">
+    <div class="modal-top">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalBadge"></div>
+      <div id="modalTitle" style="font-size:20px;font-weight:800;margin:8px 0;"></div>
+      <div id="modalEn" style="font-size:13px;color:#5a6a7e;"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  // 产品详情数据
+  const products = {
+    p1: {
+      badge: '<span class="card-badge badge-junior">青少年段</span>',
+      title: '外研新思维英语青少版',
+      en: 'New Thinking English for Teenagers',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">课程简介</div>
+          <div class="modal-text">《外研新思维英语青少版》以"新思维"为核心理念，将批判性思维与创造性思维有机融入英语教学，帮助学生在语言学习的同时发展高阶认知能力。</div>
+          <div class="highlight-box">核心理念：语言是思维的载体，教语言就是教思维。本系列致力于培养能用英语"深度思考"的学习者。</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">教材特色</div>
+          <div class="training-points">
+            <div class="tp-item"><div class="tp-icon">🎯</div>主题式单元设计，每单元围绕一个真实世界话题展开</div>
+            <div class="tp-item"><div class="tp-icon">💡</div>思维可视化工具，思维导图、概念图贯穿全册</div>
+            <div class="tp-item"><div class="tp-icon">📱</div>配套数字化平台，支持线上线下混合教学</div>
+            <div class="tp-item"><div class="tp-icon">📊</div>过程性评价体系，教学评一体化设计</div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">培训重点</div>
+          <ul class="feature-list">
+            <li>如何在英语课堂中真正落实"思维可视化"教学</li>
+            <li>主题式教学单元的整体设计与实施路径</li>
+            <li>如何利用数字化配套资源提升课堂效率</li>
+            <li>教学评一体化的评价工具使用方法</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">适用场景</div>
+          <div class="modal-text">适用于小学高年级至初中阶段（7-15岁），尤其适合希望在英语教学中融入核心素养培养目标的学校。</div>
+        </div>
+      `
+    },
+    p2: {
+      badge: '<span class="card-badge badge-child">儿童段</span>',
+      title: '外研趣学少儿英语（新版）',
+      en: 'Fun with English (New Edition)',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">课程简介</div>
+          <div class="modal-text">全新升级版《外研趣学少儿英语》以"趣"字为核心，通过丰富的游戏、歌谣、故事和互动活动，让6-10岁的孩子在快乐中爱上英语学习。</div>
+          <div class="highlight-box">新版亮点：全面更新内容选题，融入当代儿童生活场景；增加AI互动练习模块，让孩子随时随地开口说英语。</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">教材特色</div>
+          <div class="training-points">
+            <div class="tp-item"><div class="tp-icon">🎮</div>游戏化课堂设计，让每节课都充满活力</div>
+            <div class="tp-item"><div class="tp-icon">🎵</div>原创儿童歌谣，朗朗上口，易学易记</div>
+            <div class="tp-item"><div class="tp-icon">📖</div>系列故事绘本，培养阅读兴趣与习惯</div>
+            <div class="tp-item"><div class="tp-icon">🏠</div>家校联动资源，延伸课外英语环境</div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">培训重点</div>
+          <ul class="feature-list">
+            <li>游戏化课堂的设计原则与组织技巧</li>
+            <li>如何利用歌谣和故事建立语音语感</li>
+            <li>家校共育策略：如何指导家长配合课堂学习</li>
+            <li>儿童课堂管理与激励策略</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">适用场景</div>
+          <div class="modal-text">适用于6-10岁小学低年级英语课程，尤其适合课时充足、希望营造沉浸式英语学习氛围的学校。</div>
+        </div>
+      `
+    },
+    p3: {
+      badge: '<span class="card-badge badge-child">儿童段</span>',
+      title: '外研趣学儿童英语',
+      en: 'Fun with English for Children',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">课程简介</div>
+          <div class="modal-text">《外研趣学儿童英语》专为3-6岁幼儿设计，采用科学的语言习得原理，以听说启蒙为主，帮助幼儿建立英语语感，培养对英语学习的持久兴趣。</div>
+          <div class="highlight-box">设计理念：幼儿学英语，重在"听"和"感受"。本系列不急于读写，让孩子先爱上听英语、说英语。</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">教材特色</div>
+          <div class="training-points">
+            <div class="tp-item"><div class="tp-icon">👂</div>以听说为主，符合幼儿语言发展规律</div>
+            <div class="tp-item"><div class="tp-icon">🤸</div>TPR全身反应，让身体参与语言学习</div>
+            <div class="tp-item"><div class="tp-icon">🔤</div>自然拼读启蒙，科学建立字母音素意识</div>
+            <div class="tp-item"><div class="tp-icon">🌈</div>鲜艳插图+动画视频，视听刺激充分</div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">培训重点</div>
+          <ul class="feature-list">
+            <li>TPR教学法的课堂实施要点与注意事项</li>
+            <li>幼儿英语课堂的节奏把握与氛围营造</li>
+            <li>自然拼读启蒙教学的科学顺序与方法</li>
+            <li>如何评估幼儿英语学习进展（非测试方式）</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">适用场景</div>
+          <div class="modal-text">适用于幼儿园及学前英语课程（3-6岁），也适合小学一年级零起点英语衔接课程使用。</div>
+        </div>
+      `
+    },
+    p4: {
+      badge: '<span class="card-badge badge-think">思辨能力</span>',
+      title: '外研思辨英语青少版',
+      en: 'Critical Thinking English for Teenagers',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">课程简介</div>
+          <div class="modal-text">《外研思辨英语青少版》是一套专注于培养高阶思维能力的英语教材，以辩论、论证、批判性分析为核心活动，帮助学生成为具备全球视野和独立思考能力的学习者。</div>
+          <div class="highlight-box">核心价值：在英语学习中同步培养"会想、会辩、会写"的思辨能力，为未来的学术发展和职业竞争奠定基础。</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">教材特色</div>
+          <div class="training-points">
+            <div class="tp-item"><div class="tp-icon">🧠</div>思辨框架清晰，每单元有明确的思维技能目标</div>
+            <div class="tp-item"><div class="tp-icon">🌍</div>真实全球议题，激发学生思考与表达欲望</div>
+            <div class="tp-item"><div class="tp-icon">🗣️</div>辩论与论证训练，强化口语和写作输出</div>
+            <div class="tp-item"><div class="tp-icon">✍️</div>学术写作引导，为高中及以上学习打基础</div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">培训重点</div>
+          <ul class="feature-list">
+            <li>如何在英语课堂中设计有效的辩论活动</li>
+            <li>思辨型阅读理解的教学策略</li>
+            <li>论证写作的脚手架设计与使用方法</li>
+            <li>评价学生思辨能力发展的多元方式</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">适用场景</div>
+          <div class="modal-text">适用于初中至高中阶段（10-18岁），尤其适合英语基础较好、希望进一步提升综合素养的学生群体，以及国际化程度较高的学校。</div>
+        </div>
+      `
+    },
+    p5: {
+      badge: '<span class="card-badge" style="background:#e3f2fd;color:#1565c0;">综合能力</span>',
+      title: '外研社英语综合能力系列',
+      en: 'Comprehensive English Ability Series',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">课程简介</div>
+          <div class="modal-text">外研社英语综合能力系列面向英语学科核心素养，整合听、说、读、写四项技能，通过项目式学习任务和真实语言使用情境，构建完整的英语综合能力培养路径。</div>
+          <div class="highlight-box">设计理念：语言能力的发展是整体的、均衡的。本系列拒绝"哑巴英语"和"应试英语"，培养真正能用英语做事的学习者。</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">教材特色</div>
+          <div class="training-points">
+            <div class="tp-item"><div class="tp-icon">🔄</div>四技能有机整合，每个单元均衡训练</div>
+            <div class="tp-item"><div class="tp-icon">📌</div>项目式学习任务，真实语言使用场景</div>
+            <div class="tp-item"><div class="tp-icon">📈</div>形成性评价工具，可视化学习成长</div>
+            <div class="tp-item"><div class="tp-icon">🤝</div>协作学习设计，培养团队沟通能力</div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">培训重点</div>
+          <ul class="feature-list">
+            <li>四技能整合教学的设计原则与课堂实施</li>
+            <li>项目式学习任务的设计与评价方法</li>
+            <li>如何利用形成性评价工具追踪学生进步</li>
+            <li>协作学习课堂的组织与管理技巧</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">适用场景</div>
+          <div class="modal-text">适用于小学中高年级至初中阶段（8-16岁），适合希望全面提升学生英语综合运用能力的学校，尤其适合有项目制学习传统的学校。</div>
+        </div>
+      `
+    }
+  };
+
+  // 筛选功能
+  function filterProducts(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      if (category === 'all' || card.dataset.category.includes(category)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // 打开弹窗
+  function openModal(id) {
+    const p = products[id];
+    if (!p) return;
+    document.getElementById('modalBadge').innerHTML = p.badge;
+    document.getElementById('modalTitle').textContent = p.title;
+    document.getElementById('modalEn').textContent = p.en;
+    document.getElementById('modalBody').innerHTML = p.body;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // 关闭弹窗
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalIfOverlay(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  // ESC键关闭
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>
